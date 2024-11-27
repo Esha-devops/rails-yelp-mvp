@@ -1,0 +1,26 @@
+<h1>Edit Restaurant</h1>
+
+<%= form_with model: @restaurant, local: true do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name, placeholder: "Enter restaurant name" %>
+    <%= @restaurant.errors.full_messages_for(:name).join(", ") if @restaurant.errors[:name].any? %>
+  </div>
+
+  <div>
+    <%= form.label :address %>
+    <%= form.text_field :address, placeholder: "Enter restaurant address" %>
+    <%= @restaurant.errors.full_messages_for(:address).join(", ") if @restaurant.errors[:address].any? %>
+  </div>
+
+  <div>
+    <%= form.label :category %>
+    <%= form.select :category, ["chinese", "italian", "japanese", "french", "belgian"], prompt: "Select a category" %>
+    <%= @restaurant.errors.full_messages_for(:category).join(", ") if @restaurant.errors[:category].any? %>
+  </div>
+
+
+  <div>
+    <%= form.submit "Edit Restaurant" %>
+  </div>
+<% end %>
